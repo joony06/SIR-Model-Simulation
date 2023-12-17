@@ -1,0 +1,39 @@
+@font-face {
+  font-family: "SUIT-Heavy";
+  src: url('../src/SUIT-ttf/SUIT-Heavy.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: "SUIT-Bold";
+  src: url('../src/SUIT-ttf/SUIT-Bold.ttf') format('truetype');
+}
+
+.footer {
+    width: 100%;
+    height: 10%;
+    margin-top: 3.1em;
+    margin-bottom: 2.8em;
+    font-family: 'SUIT-Heavy';
+  }
+
+  #footer-span {
+    display: flex;
+    justify-content: center;
+  }
+
+  #copyright {
+    margin-right: 3.1em;
+  }
+
+  #email {
+    margin-left: 3.1em;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  a:hover {
+    color: grey;
+  }

@@ -80,6 +80,12 @@ h2  {
     padding: 0em;
 }
 
+#name {
+    margin: 0em;
+    padding: 0em;
+    font-size: 0.4em;
+}
+
 .flex-container {
     display: flex;
 }
