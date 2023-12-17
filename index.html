@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>SIR Model Simulation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- stylesheets -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto:100,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/default.css">
+    <link rel="stylesheet" href="styles/footer.css">
+    <!-- favicon.ico -->
+    <link rel="icon" href="favicon.png" type="image/x-icon" />
+</head>
+
+<body onload="alertIfNotChrome()">
+    <div class="main" id="main">
+        <div id="title-div">
+            <h1>SIR Model Test Simulation</h1>
+        </div>
+
+        <div id="content-div">
+            <div id="text-div">
+                <p>
+                    이 페이지는 질병이 사람들 사이에서 어떻게 퍼져나가는지를 시뮬레이션합니다.<br>
+                    위 시뮬레이션은 
+                    <a href="https://en.wikipedia.org/wiki/Compartmental_models_in_epidemiology#The_SIR_model"  target="_blank" rel="noopener noreferrer">SIR
+                        Model</a>을 기반으로 합니다.
+                </p>
+                
+              이 모델은 캔버스에서 점으로 표현된 인구를 감염 가능자(노란점), 감염자(빨간점), 회복자(초록점)로 구분합니다.
+                </p>
+                <p>
+                  조절 가능한 파라미터는 인구수(3부터 300까지), 감염 가능성, 회복 시간, 점의 이동속도(높을수록 빠르고, 높을수록 점들의 충돌 횟수가 증가하고 질병이 더 빠르게 전파됨)입니다. <br>
+                  질병은 감염자와 감염 가능자의 접촉을 통해 전파되며, 한번 회복된 사람은 다시 전염시킬 수 없다고 가정합니다. 
+                <br>
+                  이 시뮬레이션은 한명은 감염자, 나머지는 감염 가능자로 시작합니다.
+                </p>
+                <p>
+                    *이 테스트는 단순 실험용이며, 정확하지 않을 수도 있음을 알립니다.<br />
+                </p>
+            </div>
+
+            <div class="flex-container" id="sim-and-form-container">
+                <div id="graph-sim-div">
+                    <div id="graph-container">
+                    </div>
+                    <div id="sirsim-container">
+                    </div>
+                </div>
+
+                <div class="form-div" id="form-div">
+                    <!-- form to set the simulation parameters and restart the sim -->
+                    <form name="form-sim-params" class="grid-container">
+                        <h2 class="form-legend">Parameters</h2>
+
+                        <label for="popsize" id="pslabel" class="label">Population Size</label>
+                        <span id="psmin" class="minspan"></span>
+                        <input type="range" id="popsize" min="10" max="500" step="10" value="300">
+                        <span id="psmax" class="maxspan"></span><span id="psactval" class="actspan"></span>
+
+                        <label for="infectionprobability">Infection Probability</label>
+                        <span id="ipmin" class="minspan"></span>
+                        <input type="range" id="infectionprobability" min="0.01" max="1" step="0.01" value="1">
+                        <span id="ipmax" class="maxspan"></span><span id="ipactval" class="actspan"></span>
+
+                        <label for="recoverytimeinmillis">Recovery Time (ms)</label>
+                        <span id="rtmin" class="minspan"></span>
+                        <input type="range" id="recoverytimeinmillis" min="1000" max="5000" step="100" value="2000">
+                        <span id="rtmax" class="maxspan"></span><span id="rtactval" class="actspan"></span>
+
+                        <label for="speed">Speed</label>
+                        <span id="spmin" class="minspan"></span>
+                        <input type="range" id="speed" min="1" max="5" step="0.1" value="2">
+                        <span id="spmax" class="maxspan"></span><span id="spactval" class="actspan"></span>
+
+                        <label for="vaccination">Vaccination Rate</label>
+                        <span id="vcmin" class="minspan"></span>
+                        <input type="range" id="vaccination" min="0" max="1" step="0.05" value="0.3">
+                        <span id="vcmax" class="maxspan"></span><span id="vcactval" class="actspan"></span>
+
+                        <label for="effectiveness">Vaccine Effectiveness</label>
+                        <span id="effecmin" class="minspan"></span>
+                        <input type="range" id="effectiveness" min="0" max="1" step="0.05" value="0.85">
+                        <span id="effecmax" class="maxspan"></span><span id="effecactval" class="actspan"></span>
+
+
+                        <div class="formbtn-div flex-container">
+                            <button id="restartbtn">Restart</button>
+                            <button id="resetbtn">Reset</button>
+                        </div>
+                    </form>
+                </div> <!-- form-div -->
+            </div> <!-- flex-container -->
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <span id="footer-span">Calculus - 2225 최원준</span>
+        </div> <!-- footer -->
+    </div> <!-- main -->
+
+    <!-- scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.0.0/lib/p5.min.js"></script>
+    <script src="scripts/alert.js"></script>
+    <script src="scripts/sirsim.js"></script>
+    <script src="scripts/graphp5.js"></script>
+    <script src="scripts/startsim.js"></script>
+    <script src="scripts/form.js"></script>
+</body>
+
+</html>
